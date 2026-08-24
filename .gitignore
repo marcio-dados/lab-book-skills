@@ -1,0 +1,13 @@
+# Fontes originais nunca são versionadas — o repo guarda o derivado textual, não a obra em
+# binário (SDD-017 §10.11). Proveniência (título, sha256, data) fica no front-matter do slug.
+*.pdf
+*.epub
+*.docx
+*.mobi
+*.azw
+*.azw3
+*.rtf
+
+__pycache__/
+.venv/
+.DS_Store
