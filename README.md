@@ -87,13 +87,23 @@ documentação da ferramenta não promete preservar front-matter que ela não es
 
 ## Como adicionar um livro/documento
 
+0. `python3 tools/book_prep/extract_metadata.py <arquivo-ou-pasta>` — extração **mecânica, sem LLM**
+   (sha256, título/autor/editora/idioma do OPF do EPUB, ou melhor-esforço via `/Info` do PDF). Aceita um
+   arquivo ou uma pasta inteira (um JSON por linha). Existe pra não gastar token de modelo com
+   `unzip`/regex/hash — isso não muda entre livros, só a etapa de síntese (frameworks, glossário, índices)
+   precisa de LLM. Trate a saída como **rascunho a conferir**, não como fonte definitiva: distribuidor
+   (WeLib.org, visto em 2 dos 7 livros já convertidos) às vezes reescreve `dc:title`/`dc:creator` com
+   watermark de destinatário — o script já sinaliza isso em `warnings`, mas o valor final ainda sai da capa/
+   ficha catalográfica de verdade. PDF escaneado/OCR quase sempre não tem `/Info` — `title`/`authors` vêm
+   `null` e a etapa 4 abaixo continua manual.
 1. `/book-to-skill <arquivo> <slug>` — gera em `~/.claude/skills/<slug>/` (destino default da ferramenta).
 2. `mv ~/.claude/skills/<slug> lab-book-skills/<slug>` — mover para dentro deste repo.
 3. **Verificar que `~/.claude/skills/<slug>` não existe mais.** Esse é o passo que garante que a skill
    global por livro — o problema que este repositório existe para evitar — não ficou pra trás.
 4. Preencher o front-matter (seção acima) no `SKILL.md` do slug, incluindo o teste de triagem ("O que
    entra" acima) e o idioma real observado nos capítulos gerados. **Autor, editora e `titulo_pt` saem do PDF
-   de origem — preencha antes de perder o arquivo de vista**, já que ele não é versionado aqui.
+   de origem — preencha antes de perder o arquivo de vista** (a saída da etapa 0 é o ponto de partida, não
+   substitui conferência quando houver `warnings`), já que o arquivo fonte não é versionado aqui.
 5. `git add lab-book-skills/<slug> && git commit`. Fonte original (PDF/EPUB/...) não é versionada — está no
    `.gitignore`.
 
