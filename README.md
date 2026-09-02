@@ -8,20 +8,29 @@ roteadora `book_lab` (`ai-lab/.claude/skills/book_lab/`). Repositório **privado
 Decidido e revisado em `ai-lab/docs/architecture_reviews/2026-08-24_SDD017_book_skill_lab.md` — esse
 documento é a fonte de verdade da arquitetura; este README é só o manual operacional.
 
+## Sobre o conteúdo dos livros
+
+Cada `<slug>/` é uma **síntese estruturada** do livro (frameworks, glossário, padrões, cheatsheet), gerada
+pelo `book-to-skill` — não uma cópia fiel nem republicação do texto original. Os capítulos condensam ideias
+e reorganizam conteúdo para consulta por agente; não reproduzem o texto do autor palavra por palavra. Os
+livros convertidos foram lidos e adquiridos legalmente por mim (a quase totalidade tem cópia física em
+casa). O copyright de autor/editora permanece integral — este repositório não substitui nem redistribui a
+obra original.
+
 ## O que entra
 
 - Livro técnico.
 - Material público/de terceiro usado no trabalho — teste binário: **"eu obteria este arquivo hoje sem
-  nenhuma credencial, acesso ou vínculo MaisTodos?"** Sim → entra. Copyright de terceiro continua valendo
-  por cima — é por isso que o repo é privado.
+  nenhuma credencial, acesso ou vínculo com minha empresa?"** Sim → entra. Copyright de terceiro continua
+  valendo por cima — é por isso que o repo é privado.
 - Documento pessoal de **referência/estudo** (manual, apostila, curso, anotação técnica).
 - Livro de desenvolvimento pessoal.
 
 ## O que NÃO entra
 
 - Arquitetura interna, runbook de dado (Trusted/lake), contrato, PII (própria ou de terceiro), credencial,
-  código ou nome de cliente da MaisTodos.
-- Qualquer anotação que agregue especificidade interna da MaisTodos a material público — isso converte
+  código ou nome de cliente da minha empresa.
+- Qualquer anotação que agregue especificidade interna da minha empresa a material público — isso converte
   material público em documento interno. Se a anotação é o valor, ela pertence a repositório da empresa,
   não a este.
 - Documento pessoal **sensível** (PII própria: contrato, holerite, exame, documento de identidade).
@@ -30,7 +39,7 @@ Este repositório é de conta pessoal. Material da empresa exige repositório da
 
 ## Estrutura
 
-Namespace plano de slugs na raiz — **sem** pastas de categoria (`livros/`, `maistodos/`, `pessoal/`...).
+Namespace plano de slugs na raiz — **sem** pastas de categoria (`livros/`, `empresa/`, `pessoal/`...).
 Categoria é metadado no front-matter (`tipo:`), não endereço — pasta é decisão que envelhece mal (item que
 muda de categoria, slug que precisa mudar de caminho e quebra citação existente).
 
